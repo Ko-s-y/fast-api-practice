@@ -10,3 +10,7 @@ class Todo(BaseModel):
 class TodoBody(BaseModel):
     title: str
     description: str
+
+
+class SuccessMessage(BaseModel):
+    message: str
