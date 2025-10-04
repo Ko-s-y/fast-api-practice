@@ -23,3 +23,11 @@ async def create_todo(request: Request, response: Response, data: TodoBody):
 async def get_dodos():
     res = await db_get_todos()
     return res
+
+@router.get("/api/todo/{id}", response_model=Todo)
+async def get_single_todo(id: str):
+    res = await db_get_single_todo(id)
+    if res:
+        return res
+    raise HTTPException(
+      status_code=404, detail=f"Task of ID: {id} doesn't exist")
